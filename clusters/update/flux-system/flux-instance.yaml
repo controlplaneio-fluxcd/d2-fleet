@@ -17,6 +17,7 @@ spec:
     - image-automation-controller
   cluster:
     type: kubernetes
+    size: medium
     multitenant: true
     tenantDefaultServiceAccount: flux
     networkPolicy: true
