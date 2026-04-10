@@ -125,11 +125,12 @@ Another option is to use Terraform or OpenTofu. An example of how to bootstrap a
 is available in the [terraform](https://github.com/controlplaneio-fluxcd/d2-fleet/tree/main/terraform) directory.
 
 ```shell
+cd terraform
+terraform init
 terraform apply \
   -var oci_token="${GITHUB_TOKEN}" \
-  -var oci_url="oci://ghcr.io/controlplaneio-fluxcd/d2-fleet" \
-  -var oci_tag="latest" \
-  -var oci_path="clusters/staging"
+  -var cluster_name="staging" \
+  -var cluster_region="eu-west-2"
 ```
 
 The bootstrap performs the following steps:

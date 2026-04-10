@@ -36,7 +36,7 @@ bootstrap-staging: ## Deploy Flux Operator on the staging Kubernetes cluster.
 	helm install flux-operator oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator \
 	  --namespace flux-system \
 	  --create-namespace \
-	  --set multitenancy.enabled=true \
+	  -f clusters/staging/flux-system/flux-operator-values.yaml \
 	  --wait
 
 	kubectl -n flux-system create secret docker-registry ghcr-auth \
@@ -54,7 +54,7 @@ bootstrap-production: ## Deploy Flux Operator on the production Kubernetes clust
 	helm install flux-operator oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator \
 	  --namespace flux-system \
 	  --create-namespace \
-	  --set multitenancy.enabled=true \
+	  -f clusters/prod-eu/flux-system/flux-operator-values.yaml \
 	  --wait
 
 	kubectl -n flux-system create secret docker-registry ghcr-auth \
