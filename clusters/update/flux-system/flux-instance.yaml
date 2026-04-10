@@ -7,12 +7,9 @@ spec:
   distribution:
     version: "2.x"
     registry: "ghcr.io/fluxcd"
-    artifact: "oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:latest"
   components:
     - source-controller
     - kustomize-controller
-    - helm-controller
-    - notification-controller
     - image-reflector-controller
     - image-automation-controller
   cluster:
