@@ -10,6 +10,7 @@ spec:
     artifact: "oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:latest"
   components:
     - source-controller
+    - source-watcher
     - kustomize-controller
     - helm-controller
     - notification-controller
