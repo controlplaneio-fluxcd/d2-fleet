@@ -31,9 +31,9 @@ module "flux_operator_bootstrap" {
   revision = var.bootstrap_revision
 
   gitops_resources = {
-    instance_path = "${path.root}/../clusters/${var.cluster_name}/flux-system/flux-instance.yaml"
+    instance_yaml = file("${path.root}/../clusters/${var.cluster_name}/flux-system/flux-instance.yaml")
     operator_chart = {
-      values = yamldecode(file("${path.root}/../clusters/${var.cluster_name}/flux-system/flux-operator-values.yaml"))
+      values_yaml = file("${path.root}/../clusters/${var.cluster_name}/flux-system/flux-operator-values.yaml")
     }
   }
 
