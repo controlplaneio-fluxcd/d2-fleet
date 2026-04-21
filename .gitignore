@@ -30,3 +30,7 @@ go.work.sum
 *.tfstate.*
 .terraform.lock.hcl
 .terraformrc
+
+# Editor and IDE paraphernalia
+.idea
+*.iml
