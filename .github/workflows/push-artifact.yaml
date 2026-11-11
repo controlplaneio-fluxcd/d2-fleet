@@ -39,6 +39,14 @@ jobs:
           fi
           echo "tag=${TAG}" >> $GITHUB_OUTPUT
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
+      - name: Push artifact with version tag
+        if: github.ref_type == 'tag'
+        uses: controlplaneio-fluxcd/distribution/actions/push@main
+        id: push-tag
+        with:
+          repository: ghcr.io/${{ github.repository }}
+          path: "./"
+          tags: ${{ steps.prep.outputs.version }}
       - name: Push artifact
         uses: controlplaneio-fluxcd/distribution/actions/push@main
         id: push
@@ -46,7 +54,6 @@ jobs:
           repository: ghcr.io/${{ github.repository }}
           path: "./"
           diff-tag: ${{ steps.prep.outputs.tag }}
-          tags: ${{ steps.prep.outputs.version }}
       - name: Sign artifact
         if: steps.push.outputs.pushed == 'true'
         run: cosign sign --yes $DIGEST_URL
